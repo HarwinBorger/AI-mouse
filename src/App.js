@@ -15,21 +15,21 @@ function App() {
 
 	let date = new Date().getTime();
 	const difference = date - parentTime;
-//	useEffect(() => {
-//		const onScroll = e => {
-//			setParentScrollTop(scrollTop);
-//			setParentTime(date);
-//			setScrollTop(e.target.documentElement.scrollTop);
-//			setScrolling(e.target.documentElement.scrollTop > scrollTop);
-//		};
-//		window.addEventListener("scroll", onScroll);
-//
-//		return () => window.removeEventListener("scroll", onScroll);
-//	});
+	useEffect(() => {
+		const onScroll = e => {
+			setParentScrollTop(scrollTop);
+			setParentTime(date);
+			setScrollTop(e.target.documentElement.scrollTop);
+			setScrolling(e.target.documentElement.scrollTop > scrollTop);
+		};
+		window.addEventListener("scroll", onScroll);
+
+		return () => window.removeEventListener("scroll", onScroll);
+	},[]);
 
 	useEffect(() => {
 		let thresholds = [];
-		let numSteps = 100;
+		let numSteps = 200;
 
 		for (let i=1.0; i<=numSteps; i++) {
 			let ratio = i/numSteps;
