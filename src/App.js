@@ -86,8 +86,22 @@ function App() {
 				difference: {difference} |
 			</div>
 			<div style={{position: "sticky", top: 20, left: 0, width: `${percentage * 100}%`, background: '#f90', height: 20}}/>
-			<div style={{position: "sticky", top: 42, left: 0, width: `${percentage * 100}%`, background: '#f90', height: 20, transition:'width', transitionDuration:`${Math.min(dtime, 200)}ms`}}/>
+			<div style={{position: "sticky", top: 42, left: 0, width: `${percentage * 100}%`, background: '#f90', height: 20, transition:'width ease-out', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
 			<div style={{position: "sticky", top: 64, left: 0, width: `${performance * 100}%`, background: '#f90', height: 20}}/>
+
+			<div style={{position: "sticky", top: 120, left: 0, width: `${percentage * 200}%`, background: '#f9f', height: 20}}/>
+			<div style={{position: "sticky", top: 142, left: 0, width: `${percentage * 200}%`, background: '#f9f', height: 20, transition:'width ease-out', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
+			<div style={{position: "sticky", top: 164, left: 0, width: `${performance * 200}%`, background: '#f9f', height: 20}}/>
+
+			<div style={{position: "sticky", top: 220, left: 0, width: `${percentage * 400}%`, background: '#99f', height: 20}}/>
+			<div style={{position: "sticky", top: 242, left: 0, width: `${percentage * 400}%`, background: '#99f', height: 20, transition:'width ease-out', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
+			<div style={{position: "sticky", top: 264, left: 0, width: `${performance * 400}%`, background: '#99f', height: 20}}/>
+
+			<div style={{position: "sticky", top: 320, left: 0, width: `${percentage * 200}%`, background: '#f99', height: 20, transition:'width linear', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
+			<div style={{position: "sticky", top: 342, left: 0, width: `${percentage * 200}%`, background: '#f99', height: 20, transition:'width ease-in-out', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
+			<div style={{position: "sticky", top: 364, left: 0, width: `${percentage * 200}%`, background: '#f99', height: 20, transition:'width ease-out', transitionDuration:`${Math.min(dtime, 500)}ms`}}/>
+
+
 			<div className="App" style={{height: '300vh', padding: '200px', marginTop: '100vh'}}>
 				<div ref={target} style={{background: '#AAA', height: '80vh'}}>
 					<div style={{position: "sticky", top: 80, left: 0, width: "100%", background: '#cccccc'}}>
