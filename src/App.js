@@ -25,14 +25,14 @@ function App() {
 		window.addEventListener("scroll", onScroll);
 
 		return () => window.removeEventListener("scroll", onScroll);
-	},[]);
+	}, []);
 
 	useEffect(() => {
 		let thresholds = [];
 		let numSteps = 200;
 
-		for (let i=1.0; i<=numSteps; i++) {
-			let ratio = i/numSteps;
+		for (let i = 1.0; i <= numSteps; i ++) {
+			let ratio = i / numSteps;
 			thresholds.push(ratio);
 		}
 
@@ -55,14 +55,16 @@ function App() {
 				setPerformance(entry.intersectionRatio);
 
 				let time = new Date().getTime();
-				if(ptime){
+				if (ptime) {
 					setDtime(time - ptime);
 					dtime = time - ptime;
 				}
 				let test = lastRatio;
-				timer = setTimeout(()=>{
-					setPerformance(entry.intersectionRatio + (entry.intersectionRatio-test)/2);
-				},dtime/2);
+				timer = setTimeout(() => {
+					setPerformance(entry.intersectionRatio + (
+						entry.intersectionRatio - test
+					) / 2);
+				}, dtime / 2);
 				ptime = time;
 				setPtime(time);
 				lastRatio = entry.intersectionRatio;
@@ -71,7 +73,7 @@ function App() {
 
 		let observer = new IntersectionObserver(callback, options);
 		observer.observe(target.current);
-	},[]);
+	}, []);
 
 	return (
 		<>
@@ -84,10 +86,11 @@ function App() {
 				difference: {difference} |
 			</div>
 			<div style={{position: "sticky", top: 20, left: 0, width: `${percentage * 100}%`, background: '#f90', height: 20}}/>
-			<div style={{position: "sticky", top: 40, left: 0, width: `${performance * 100}%`, background: '#f90', height: 20}}/>
+			<div style={{position: "sticky", top: 42, left: 0, width: `${percentage * 100}%`, background: '#f90', height: 20, transition:'width', transitionDuration:`${Math.min(dtime, 200)}ms`}}/>
+			<div style={{position: "sticky", top: 64, left: 0, width: `${performance * 100}%`, background: '#f90', height: 20}}/>
 			<div className="App" style={{height: '300vh', padding: '200px', marginTop: '100vh'}}>
 				<div ref={target} style={{background: '#AAA', height: '80vh'}}>
-					<div style={{position: "sticky", top: 60, left: 0, width: "100%", background: '#cccccc'}}>
+					<div style={{position: "sticky", top: 80, left: 0, width: "100%", background: '#cccccc'}}>
 						parentScrollTop: {percentage}, dtime: {dtime}, ptime: {ptime}
 					</div>
 				</div>
